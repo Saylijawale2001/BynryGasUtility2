@@ -1,0 +1,38 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block main-content %}
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">User</th>
+        <th scope="col">Request Type</th>
+
+        <th scope="col">Status</th>
+        <th scope="col">Details</th>
+        <th scope="col">Submission Date</th>
+        <th scope="col">Action</th>
+
+
+        {% comment %} <th scope="col">Handle</th> {% endcomment %}
+      </tr>
+    </thead>
+    <tbody>
+        {% comment %} {{data}} {% endcomment %}
+        {% for i in data %}
+        <tr>
+            <td>{{ i.customer }}</td>
+            <td>{{ i.request_type }}</td>
+
+            <td>{{ i.status }}</td>
+            <td>{{ i.details }}</td>
+            <td>{{ i.submission_date }}</td>
+            <td><a href="{% url 'edit_request' i.id %}"><button>Edit</button></a></td>
+
+        </tr>
+
+           {% endfor %}
+
+
+{% endblock main-content %}

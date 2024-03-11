@@ -1,0 +1,46 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block main-content %}
+
+
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h2>Service Request Form</h2>
+    <!-- Request Type -->
+    <label for="request_type">Request Type:</label><br>
+    <select id="request_type">
+      <option>{{data.request_type}}</option>
+ 
+    </select><br><br>
+  
+    <!-- Detail -->
+    <label for="detail">Detail:</label><br>
+    <textarea id="detail" rows="4" cols="50" readonly>{{data.details}}</textarea><br><br>
+
+    <label for="status">Status:</label><br>
+    <select id="status" name="status">
+      <option value="Pending">Pending</option>
+      <option value="In Progress">In Progress</option>
+      <option value="Completed">Completed</option>
+     
+    </select>
+  <br><br><br>
+    <!-- Choose File -->
+    {% comment %} <label for="file">dow File:</label><br> {% endcomment %}
+    {% if data.attachment %}
+    Click here to download Packing List<br>
+    <a href="{{data.attachment.url}}" target="_blank">{{data.attachment}}</a>
+    {% else %}
+    No Document Uploaded
+    {% endif %}
+  <br><br>
+    <!-- Submit Button -->
+    <input type="submit" value="Submit">
+  
+  </form>
+
+{% endblock main-content %}
+
+
+

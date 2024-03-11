@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main-content %}
+
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h2>Service Request Form</h2>
+    <!-- Request Type -->
+    <label for="request_type">Request Type:</label><br>
+    <select id="request_type" name="request_type">
+      <option value="New Connection">New Connection</option>
+      <option value="Disconnection">Disconnection</option>
+      <option value="Leak">Leak</option>
+      <option value="Meter Replacement/Repair">Meter Replacement/Repair</option>
+      <option value="Billing Inquiry">Billing Inquiry</option>
+    </select><br><br>
+  
+    <!-- Detail -->
+    <label for="detail">Detail:</label><br>
+    <textarea id="detail" name="detail" rows="4" cols="50"></textarea><br><br>
+  
+    <!-- Choose File -->
+    <label for="file">Choose File:</label><br>
+    <input type="file" id="file" name="file"><br><br>
+  
+    <!-- Submit Button -->
+    <input type="submit" value="Submit">
+  
+  </form>
+
+{% endblock main-content %}
