@@ -131,33 +131,9 @@ def dashboard(request):
     return render(request, 'customer/dashboard.html', {'data':data})
 
 @login_required
-def service_request_list(request):
-    service_requests = ServiceRequest.objects.filter(customer=request.user)
-    return render(request, 'service_request_list.html', {'service_requests': service_requests})
-
-@login_required
 def account_info(request):
     account = Account.objects.get(user=request.user)
     return render(request, 'customer/account_info.html', {'account': account})
-
-@login_required
-def account_update(request):
-    account = Account.objects.get(user=request.user)
-    if request.method == 'POST':
-        form = AccountUpdateForm(request.POST, instance=account)
-        if form.is_valid():
-            form.save()
-            return redirect('account_info')
-    else:
-        form = AccountUpdateForm(instance=account)
-    return render(request, 'account_update.html', {'form': form})
-
-@login_required
-def support_tool(request):
-    if not request.user.is_staff:
-        return redirect('login')  # Redirect non-staff users
-    service_requests = ServiceRequest.objects.all()
-    return render(request, 'support_tool.html', {'service_requests': service_requests})
 
 def user_logout(request):
     logout(request)
