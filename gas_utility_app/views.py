@@ -52,7 +52,7 @@ def user_login(request):
                 if user.is_superuser:
                     return redirect('admin_dashboard')  # Redirect to admin dashboard
                 elif user.is_staff:
-                    return redirect('dashboard')  # Redirect to staff dashboard
+                    return redirect('staff-dashboard')  # Redirect to staff dashboard
                 else:
                     return redirect(reverse('service_request_form'))  # Redirect to service request form
     else:
