@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block main-content %}
-
+<div class="login-container">
 <form action="" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <h2>Service Request Form</h2>
@@ -27,5 +27,5 @@
     <input type="submit" value="Submit">
   
   </form>
-
+</div>
 {% endblock main-content %}
