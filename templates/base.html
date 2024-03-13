@@ -40,10 +40,11 @@
             background-position: center;
             margin: 0;
             padding: 0;
-            min-height: 100vh;
+            height: 100vh;
             display: flex;
             flex-direction: column;
-
+            justify-content: space-between;
+            background-attachment:fixed;
         }
 
         .navbar {
@@ -66,17 +67,13 @@
 }
         .login-container {
             background-color: rgba(255, 255, 255, 0.7);
-
             padding: 20px;
             border-radius: 10px;
             width: 650px;
             margin: auto;
             font-family :Georgia;
-            position: absolute; /* Position the container */
-    top: 50%; /* Move the container to the center vertically */
-    left: 50%; /* Move the container to the center horizontally */
-    transform: translate(-50%, -50%); /* Translate the container to center */
-    z-index: 1;
+
+
 
         }
 
@@ -136,17 +133,13 @@
     <a href="{% url 'dashboard' %}" class="dropdown-item nav-link text-white">Dashboard</a>
 </li>
 
-
-
-            <li class="nav-item ">
+           <li>  <a class="dropdown-item nav-link text-white" href="{% url 'logout' %}">Logout</a>
+           </li>
+            </ul>
+              <li class="nav-item ">
                  <a class="dropdown-item nav-link text-white" href="#">{{request.user.username|capfirst}}</a>
                  </li>
            <li class="nav-item">
-
-            <a class="dropdown-item nav-link text-white" href="{% url 'logout' %}">Logout</a>
-           </li>
-            </ul>
-
               <button class="btn btn-warning "  style="height:40px; width:40px;" type="submit">{{request.user.username|capfirst|first}}</button>
 
             {% else %}
@@ -166,16 +159,18 @@
        </div></div>
     </nav>
       </div>
-
-<div class="container-fluid" style="padding: 0; padding-bottom: 4rem;z-index: 2;">
-    <div class="row">
-        <div class="col-10" style="overflow-y: auto; max-height: calc(100vh - 200px);">
-    {% block main-content %} {% endblock main-content %}
-             </div>
+<br><br>
+  <div class="container-fluid" style="padding: 0;  margin-top: 60px;">
+        <div class="row">
+            <div class="col-12">
+                <!-- Your main content goes here -->
+                {% block main-content %} {% endblock main-content %}
+            </div>
+        </div>
     </div>
-</div>
 <div>
     <!-- Start Footer -->
+    <br>
     <footer class="container-fluid footer text-center p-2 mt-5 bg-dark">
         <small class="text-white" style="font-family:georgia;"> || Designed  By Sayli Milind Jawale || </small>
 
